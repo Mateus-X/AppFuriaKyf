@@ -77,8 +77,8 @@ export function Input({ inputRef, label, error, value, secureTextEntry, onFocus,
                     style={styles.showPasswordButton}
                 >
                     {textIsVisible 
-                        ? <Icon name="eye-off" size={24} color={"#000"} />
-                        : <Icon name="eye" size={24} color={"#000"} />
+                        ? <Icon name="eye-off" size={24} color={theme.colors.white} />
+                        : <Icon name="eye" size={24} color={theme.colors.white} />
                     }
                 </TouchableOpacity>
                 : null
@@ -102,8 +102,8 @@ export function Input({ inputRef, label, error, value, secureTextEntry, onFocus,
                     }
                 }}
                 secureTextEntry={typeof secureTextEntry === "boolean" && secureTextEntry ? !textIsVisible : undefined}
-                cursorColor={"#000"}
-                selectionColor={"#000"}
+                cursorColor={theme.colors.white}
+                selectionColor={theme.colors.white}
                 style={styles.input}
             />
 

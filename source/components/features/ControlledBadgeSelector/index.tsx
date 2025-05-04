@@ -9,13 +9,15 @@ interface ControlledBadgeSelectorProps {
     items: string[];
     multiple?: boolean;
     label?: string;
+    disabled?: boolean;
 }
 
 export function ControlledBadgeSelector({
     name,
     control,
     items,
-    multiple = true,
+    multiple = false,
+    disabled,
     label,
 }: ControlledBadgeSelectorProps) {
     const {
@@ -31,6 +33,7 @@ export function ControlledBadgeSelector({
                 multiple={multiple}
                 selectedItems={value}
                 onSelect={onChange}
+                disabled={disabled}
             />
             {error && <Text style={{ color: "red" }}>{error.message}</Text>}
         </View>

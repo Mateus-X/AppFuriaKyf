@@ -1,4 +1,5 @@
-export { AccountDetailsResponse } from "./queries/AccountDetailsResponse";
+export { QuestionaryResponse } from "./queries/QuestionaryResponse";
+export { QuestionaryRequest } from "./queries/QuestionaryRequest";
 export { DefaultResponse } from "./queries/DefaultResponse";
 export { ErrorResponse } from "./queries/ErrorResponse";
 export { ForgotPasswordChangePasswordRequest } from "./queries/ForgotPasswordChangePasswordRequest";

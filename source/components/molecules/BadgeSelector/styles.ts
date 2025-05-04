@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { createStyleSheet } from "react-native-unistyles";
 
-export const stylesheet = StyleSheet.create({
+export const stylesheet = createStyleSheet(theme => ({
   badgeContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -16,7 +16,7 @@ export const stylesheet = StyleSheet.create({
     marginBottom: 8,
   },
   badgeSelected: {
-    backgroundColor: '#007AFF',
+    backgroundColor: theme.colors.white,
     borderColor: 'transparent',
   },
   badgeUnselected: {
@@ -24,9 +24,9 @@ export const stylesheet = StyleSheet.create({
     borderColor: '#ccc',
   },
   badgeTextSelected: {
-    color: '#fff',
+    color: theme.colors.black,
   },
   badgeTextUnselected: {
-    color: '#888',
+    color: theme.colors.white,
   },
-});
+}));

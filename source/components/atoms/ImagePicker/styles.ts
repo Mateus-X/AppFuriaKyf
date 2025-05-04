@@ -1,28 +1,43 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { createStyleSheet } from 'react-native-unistyles';
 
-export const stylesheet = StyleSheet.create({
-  background: {
-    flex: 1,
-    backgroundColor: '#FFF',
+export const stylesheet = createStyleSheet((theme) => ({
+  container: {
+    alignItems: 'center',
+    marginVertical: 16,
   },
-  imageBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
+  label: {
+    marginBottom: 8,
+    color: theme.colors.white,
+  },
+  buttonContainer: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
     width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 1,
   },
-  gradientOverlay: {
+  button: {
+    backgroundColor: theme.colors.white,
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 8,
+    alignSelf: 'center',
+  },
+  deleteButton: {
+    backgroundColor: theme.colors.black,
     position: 'absolute',
-    top: 0,
-    left: 0,
+    bottom: 10,
     right: 0,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 2,
+    padding: 8,
+
   },
-});
+  image: {
+    width: 120,
+    height: 120,
+    borderRadius: 8,
+  },
+  error: {
+    color: theme.colors.dark_red,
+    marginTop: 8,
+  },
+}));
 
 export default stylesheet;

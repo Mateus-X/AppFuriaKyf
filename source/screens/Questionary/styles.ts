@@ -1,28 +1,40 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { responsiveFontSizeByPixel } from '@source/utils';
+import { Dimensions } from 'react-native';
+import { createStyleSheet } from 'react-native-unistyles';
 
-export const stylesheet = StyleSheet.create({
+export const stylesheet = createStyleSheet((theme) => ({
   background: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: theme.colors.black,
+    paddingHorizontal: responsiveFontSizeByPixel(20),
   },
-  imageBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 1,
+  safeAreaViewContainer: {
+    flex: 1,
+    paddingTop: 0,
   },
-  gradientOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 2,
+  keyboardAvoidingViewContainer: {},
+  scrollViewContainer: {
+    marginBottom: 60,
   },
-});
+  formWrapper: {
+    flex: 1,
+    gap: responsiveFontSizeByPixel(18),
+  },
+  pageTitle: {
+    color: theme.colors.white,
+    fontSize: responsiveFontSizeByPixel(28),
+    fontFamily: theme.fonts.inter[500],
+    marginBottom: responsiveFontSizeByPixel(15),
+    alignSelf: 'center',
+  },
+  formContainer: {
+    marginBottom: 5,
+  },
+  formInputTitle: {
+    color: theme.colors.white,
+    fontSize: responsiveFontSizeByPixel(18),
+    fontFamily: theme.fonts.inter[400],
+  }
+}));
 
 export default stylesheet;

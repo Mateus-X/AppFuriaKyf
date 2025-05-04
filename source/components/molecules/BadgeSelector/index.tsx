@@ -9,9 +9,10 @@ export interface BadgeSelectorProps {
     onSelect: (selected: string | string[]) => void;
     multiple?: boolean;
     selectedItems?: string[];
+    disabled?: boolean;
 }
 
-export function BadgeSelector({ items, onSelect, multiple = false, selectedItems = [] }: BadgeSelectorProps) {
+export function BadgeSelector({ items, onSelect, multiple = false, selectedItems = [], disabled }: BadgeSelectorProps) {
     const [internalSelectedBadges, setInternalSelectedBadges] = useState<string[]>([]);
     const { styles } = useStyles(stylesheet);
 
@@ -41,6 +42,7 @@ export function BadgeSelector({ items, onSelect, multiple = false, selectedItems
                     key={badge}
                     style={[styles.badge, currentSelected.includes(badge) ? styles.badgeSelected : styles.badgeUnselected]}
                     onPress={() => handleBadgeClick(badge)}
+                    disabled={disabled}
                 >
                     <Text style={currentSelected.includes(badge) ? styles.badgeTextSelected : styles.badgeTextUnselected}>
                         {badge}

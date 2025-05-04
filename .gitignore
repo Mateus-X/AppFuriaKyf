@@ -9,6 +9,8 @@ dist/
 web-build/
 expo-env.d.ts
 
+temporary_storage/
+
 # Native
 *.orig.*
 *.jks

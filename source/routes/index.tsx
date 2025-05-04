@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { useAppSelector } from "@source/hooks";
 
 import { OnboardingScreen } from "@source/screens/Onboarding";
+import QuestionaryScreen from "@source/screens/Questionary";
 
 const MainStack = createNativeStackNavigator();
 
@@ -45,13 +46,18 @@ export default function Routes() {
             <NavigationContainer>
                 <MainStack.Navigator
                     id={undefined}
-                    initialRouteName={"onboarding"}
+                    initialRouteName={"Onboarding"}
                     screenOptions={{ animation: "slide_from_right" }}
                 >
                     <>
                         <MainStack.Screen
-                            name="onboarding"
+                            name="Onboarding"
                             component={OnboardingScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <MainStack.Screen
+                            name="Questionary"
+                            component={QuestionaryScreen}
                             options={{ headerShown: false }}
                         />
                     </>

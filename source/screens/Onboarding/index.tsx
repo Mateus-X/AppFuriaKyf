@@ -10,28 +10,17 @@ import { HeroTemplate } from "@source/components/organisms/HeroTemplate";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useStyles } from "react-native-unistyles";
 import { stylesheet } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-// type RootStackParamList = {
-//   VerifyToken: {
-//     cashback: number;
-//     installment: Installment;
-//     installmentParams: InstallmentParam[];
-//     fee: number;
-//   };
-//   ContractBuy: undefined;
-//   DataBank: undefined;
-//   AprovePayment: undefined;
-// };
+type RootStackParamList = {
+    Questionary: undefined;
+};
 
 export function OnboardingScreen({}: { navigation: any }) {
     const [step, setStep] = useState(1);
     const { styles, theme } = useStyles(stylesheet);
-
-    useEffect(() => {
-        if (step > 3) {
-            console.log("Step is greater than 3, resetting to 1");
-        }
-    });
+    const  navigator = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     return (
         <HeroTemplate currentStep={step}>
@@ -42,55 +31,83 @@ export function OnboardingScreen({}: { navigation: any }) {
                             De Fã pra Fã
                         </Text>
                         <Text style={styles.informativeText}>
-                            Nos permita te conhecer melhor
+                            A gente entende a sua paixão. Agora nos permita te conhecer melhor.
                         </Text>
                     </View>
                 )}
                 {step === 2 && (
                     <View>
                         <Text style={styles.informativeTitle}>
-                            De Fã pra Fã
+                            Conecte sua História
                         </Text>
                         <Text style={styles.informativeText}>
-                            Nos permita te conehcer melhor
+                            Saiba junto da gente o que te faz um fã único.
                         </Text>
                     </View>
                 )}
                 {step === 3 && (
                     <View>
                         <Text style={styles.informativeTitle}>
-                            De Fã pra Fã
+                           Seja Reconhecido
                         </Text>
                         <Text style={styles.informativeText}>
-                            Nos permita te conehcer melhor
+                            Valide seu perfil e tenha acesso a informações exclusivas do seu time de Esports.
                         </Text>
                     </View>
                 )}
-                <TouchableOpacity
-                    onPress={() => setStep((prev) => prev + 1)}
-                    style={{
-                        backgroundColor: "#fff",
-                        position: "absolute",
-                        left: 295,
-                        top: 330,
-                        borderRadius: 50,
-                        width: 50,
-                        height: 50,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        shadowColor: theme.colors.gray,
-                    }}
-                >
-                    <View
-                        style={{ flexDirection: "row", alignItems: "center" }}
+                {step < 3 ? (
+                    <TouchableOpacity
+                        onPress={() => setStep((prev) => prev + 1)}
+                        style={{
+                            backgroundColor: "#fff",
+                            position: "absolute",
+                            left: 295,
+                            top: 330,
+                            borderRadius: 50,
+                            width: 50,
+                            height: 50,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            shadowColor: theme.colors.gray,
+                        }}
                     >
-                        <MaterialCommunityIcons
-                            name="chevron-right"
-                            color={theme.colors.black}
-                            size={40}
-                        />
-                    </View>
-                </TouchableOpacity>
+                        <View
+                            style={{ flexDirection: "row", alignItems: "center" }}
+                        >
+                            <MaterialCommunityIcons
+                                name="chevron-right"
+                                color={theme.colors.black}
+                                size={40}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                ) : (
+                    <TouchableOpacity
+                        onPress={() => navigator.navigate("Questionary")}
+                        style={{
+                            backgroundColor: "#fff",
+                            position: "absolute",
+                            left: 295,
+                            top: 330,
+                            borderRadius: 50,
+                            width: 50,
+                            height: 50,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            shadowColor: theme.colors.gray,
+                        }}
+                    >
+                        <View
+                            style={{ flexDirection: "row", alignItems: "center" }}
+                        >
+                            <MaterialCommunityIcons
+                                name="check"
+                                color={theme.colors.black}
+                                size={35}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                )}
             </View>
         </HeroTemplate>
     );

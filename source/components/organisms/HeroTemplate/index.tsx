@@ -17,7 +17,13 @@ export function HeroTemplate({ children, currentStep }: HeroTemplateProps) {
     return (
         <View style={styles.background}>
             <Image 
-                source={require("@source/assets/icons/onboarding1.png")} // Replace with your image path
+                source={
+                    currentStep === 1
+                        ? require("@source/assets/icons/onboarding1.png")
+                        : currentStep === 2
+                        ? require("@source/assets/icons/onboarding2.png")
+                        : require("@source/assets/icons/onboarding3.png") 
+                }
                 style={[styles.imageBackground, { height: gradientHeight, zIndex: 1 }]}
                 resizeMode="cover"
             />

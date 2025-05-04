@@ -2,14 +2,20 @@ import React from "react";
 import { ControllerRenderProps } from "react-hook-form";
 import { View, TouchableOpacity, Image, Text } from "react-native";
 import { launchImageLibraryAsync } from "expo-image-picker";
+import { useStyles } from "react-native-unistyles";
+import { stylesheet } from "./styles";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 interface ImageInputProps {
   field: ControllerRenderProps<any, any>;
   fieldState: any;
   label?: string;
+  disabled?: boolean;
 }
 
-export default function ImageInput({ field, fieldState, label }: ImageInputProps) {
+export default function ImageInput({ field, fieldState, label, disabled }: ImageInputProps) {
+  const {styles} = useStyles(stylesheet);
+
   const handlePickImage = async () => {
     const response = await launchImageLibraryAsync({
       mediaTypes: "images",
@@ -20,28 +26,41 @@ export default function ImageInput({ field, fieldState, label }: ImageInputProps
     }
   };
 
+  const handleRemoveImage = () => {
+    field.onChange(null);
+  }
+
   return (
-    <View style={{ alignItems: "center", marginVertical: 16 }}>
-      {label && <Text style={{ marginBottom: 8 }}>{label}</Text>}
-      <TouchableOpacity
-        onPress={handlePickImage}
-        style={{
-          backgroundColor: "#eee",
-          padding: 12,
-          borderRadius: 8,
-          marginBottom: 8,
-        }}
-      >
-        <Text>Selecionar imagem</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      {label && <Text style={styles.label}>{label}</Text>}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={handleRemoveImage}
+            style={styles.deleteButton}
+            disabled={disabled}
+          >
+            <MaterialCommunityIcons
+              name="delete-outline"
+              size={24}
+              color="white"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handlePickImage}
+            style={styles.button}
+            disabled={disabled}
+          >
+            <Text>Selecionar imagem</Text>
+          </TouchableOpacity>
+        </View>
       {field.value ? (
         <Image
           source={{ uri: field.value }}
-          style={{ width: 120, height: 120, borderRadius: 8 }}
+          style={styles.image}
         />
       ) : null}
       {fieldState.error && (
-        <Text style={{ color: "red", marginTop: 8 }}>{fieldState.error.message}</Text>
+        <Text style={styles.error}>{fieldState.error.message}</Text>
       )}
     </View>
   );

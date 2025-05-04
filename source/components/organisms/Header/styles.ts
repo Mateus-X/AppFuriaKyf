@@ -1,28 +1,26 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { responsiveFontSizeByPixel } from "@source/utils";
+import { Dimensions } from "react-native";
+import { createStyleSheet } from "react-native-unistyles";
 
-export const stylesheet = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  },
-  imageBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 1,
-  },
-  gradientOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-    height: Dimensions.get('window').height * 0.4, 
-    zIndex: 2,
-  },
-});
+export const stylesheet = createStyleSheet((theme) => ({
+    container: {
+        paddingBottom: responsiveFontSizeByPixel(15),
+        paddingTop: responsiveFontSizeByPixel(40),
+        backgroundColor: theme.colors.black,
+        flexDirection: "row",
+        justifyContent: "center",
+    },
+    authContainer: {
+        flexDirection: "row",
+        paddingBottom: responsiveFontSizeByPixel(15),
+        paddingTop: responsiveFontSizeByPixel(40),
+        backgroundColor: theme.colors.black,
+    },
+    text: {
+        color: theme.colors.white,
+        fontSize: responsiveFontSizeByPixel(18),
+        fontFamily: theme.fonts.inter[400],
+    }
+}));
 
 export default stylesheet;

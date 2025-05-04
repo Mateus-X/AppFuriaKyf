@@ -1,44 +1,47 @@
-import { responsiveFontSizeByPixel } from '@source/utils/responsiveFontSizeByPixel';
-import { StyleSheet } from 'react-native';
+import { createStyleSheet } from "react-native-unistyles";
 
-export const stylesheet = StyleSheet.create({
-  container: {
-    position: 'relative',
-    gap: 6,
-  },
-  input: {
-    height: 56,
-    paddingHorizontal: 20,
-    backgroundColor: "#000",
-    borderRadius: 6,
-    borderWidth: 1,
-    marginTop: 2,
-    borderColor: "#000",
-    fontSize: responsiveFontSizeByPixel(16),
-    lineHeight: responsiveFontSizeByPixel(24),
-  fontFamily: "PlusJakartaSans_300Light",
-    color: "#000",
-  },
-  disabledInput: {
-    backgroundColor: '#f5f5f5', 
-    borderColor: '#cccccc', 
-    color: '#999999', 
-  },
-  disabledLabel: {
-    color: '#999999',
-  },
-  label: {
-    position: 'absolute',
-    left: 15,
-    zIndex: 1,
-    paddingHorizontal: 5,
-    fontSize: responsiveFontSizeByPixel(16),
-    fontFamily: "PlusJakartaSans_300Light",
-    color: "#fff",
-  },
-  errorMessage: {
-    fontSize: responsiveFontSizeByPixel(14),
-    fontFamily: "PlusJakartaSans_300Light",
-    color: "#ff0000",
-  },
-});
+import { responsiveFontSizeByPixel } from "@source/utils/responsiveFontSizeByPixel";
+
+export const stylesheet = createStyleSheet(theme => ({
+    container: {
+        position: "relative",
+        gap: 6,
+    },
+    input: {
+        height: 56,
+        paddingHorizontal: 20,
+        backgroundColor: theme.colors.secondary,
+        marginTop: 2,
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: theme.colors.white,
+        fontSize: responsiveFontSizeByPixel(18),
+        lineHeight: responsiveFontSizeByPixel(24),
+        fontFamily: theme.fonts.inter[400],
+        color: theme.colors.white,
+    },
+    label: {
+        position: "absolute",
+        left: 10,
+        zIndex: 1,
+        paddingHorizontal: 5,
+        fontSize: responsiveFontSizeByPixel(16),
+        fontFamily: theme.fonts.inter[400],
+        color: theme.colors.white,
+    },
+    errorMessage: {
+        fontSize: responsiveFontSizeByPixel(14),
+        fontFamily: theme.fonts.inter[400],
+        color: theme.colors.dark_red,
+    },
+    showPasswordButton: {
+        position: "absolute",
+        top: 0,
+        right: 0,
+        zIndex: 1,
+        height: 56,
+        paddingHorizontal: 20,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+}));

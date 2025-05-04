@@ -6,18 +6,43 @@ import { stylesheet } from "./styles";
 
 interface HeaderProps {
     label?: string;
-    variant: "simple" | "unauthenticated" | "shop" | "step" | "ImageScreen";
-    goBack?: () => void;
+    variant: "simple" | "authenticated";
+    name?: string;
 }
 
-export function Header({variant }: HeaderProps) {
-    const { styles } = useStyles(stylesheet);
+export function Header({ variant, name }: HeaderProps) {
+    const { styles, theme } = useStyles(stylesheet);
 
     return (
         <>
             {variant === "simple" && (
                 <View style={styles.container}>
-                    <FuriaLogo />
+                    <FuriaLogo width={50} height={50} />
+                </View>
+            )}
+            {variant === "authenticated" && (
+                <View style={styles.authContainer}>
+                    <View style={{ gap: 10, flexDirection: "row", alignItems: "center" }}>
+                        <Image
+                            source={require("@source/assets/icons/icon.jpeg")}
+                            style={{
+                                borderColor: theme.colors.white,
+                                borderWidth: 1,
+                                borderRadius: 50,
+                                width: 50,
+                                height: 50,
+                            }}
+                        />
+                        <View style={{ gap: 5, flexDirection: "column" }}>
+                            <Text style={styles.text}>Boa tarde,</Text>
+                            <Text style={[styles.text, ]}>{name}</Text>
+                        </View>
+                    </View>
+                    <FuriaLogo
+                        style={{ alignSelf: "center" }}
+                        width={50}
+                        height={50}
+                    />
                 </View>
             )}
         </>

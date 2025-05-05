@@ -16,7 +16,7 @@ import {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://192.168.2.101:5123/api`,
+    baseUrl: `${API_URL}/api`,
     prepareHeaders: async (headers) => {
       return headers;
     },

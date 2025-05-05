@@ -66,10 +66,10 @@ export default function QuestionaryScreen({}) {
     } = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "teste",
-            email: "teste@teste.com",
-            cpf: "13.840.681-4",
-            aboutyou: "Oi",
+            name: "",
+            email: "",
+            cpf: "",
+            aboutyou: "",
             interests: [],
             events: [],
             document: null,

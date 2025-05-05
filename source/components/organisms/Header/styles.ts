@@ -11,6 +11,9 @@ export const stylesheet = createStyleSheet((theme) => ({
         justifyContent: "center",
     },
     authContainer: {
+        alignItems: "center",
+        justifyContent: "space-between",
+        alignContent: "center",
         flexDirection: "row",
         paddingBottom: responsiveFontSizeByPixel(15),
         paddingTop: responsiveFontSizeByPixel(40),

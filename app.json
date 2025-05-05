@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "app-furia-kyf",
+    "scheme": "app-furia-kyf",
     "slug": "app-furia-kyf",
     "version": "1.0.0",
     "plugins": [

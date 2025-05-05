@@ -37,10 +37,18 @@ export const api = createApi({
         body: formData,
       }),
     }),
+    // ** Account
+    RedditData: builder.query<RedditDataResponse, { id: number }>({
+      query: ({ id }) => ({
+        url: `/reddit/data?id=${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
 export const {
   // ** Account
   useFansMutation,
+  useRedditDataQuery
 } = api;

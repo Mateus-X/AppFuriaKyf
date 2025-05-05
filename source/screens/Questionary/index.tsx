@@ -45,10 +45,7 @@ const formSchema = z.object({
 });
 
 type RootStackParamList = {
-    ContractBuy: undefined;
-    SignUpSuccess: undefined;
-    PrivacyPolicy: undefined;
-    TermsConditions: undefined;
+    Dashboard: undefined;
 };
 
 export default function QuestionaryScreen({}) {
@@ -123,8 +120,7 @@ export default function QuestionaryScreen({}) {
                     })
                 );
 
-                console.log("User data from Redux:", selector);
-                navigator.navigate("SignUpSuccess");
+                navigator.navigate("Dashboard");
             }
         } catch (error) {
             console.log("error", error);

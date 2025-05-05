@@ -5,15 +5,18 @@ import {
     Text,
     TouchableOpacity,
     TouchableOpacityProps,
+    View,
     ViewStyle,
 } from "react-native";
 import { stylesheet } from "./styles";
 import { useStyles } from "react-native-unistyles";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export interface ButtonProps
     extends Omit<TouchableOpacityProps, "activeOpacity" | "style"> {
     label: string;
     variant?: "primary" | "secondary";
+    icon?: string;
     isLoading?: boolean;
     style?: ViewStyle;
 }
@@ -23,6 +26,7 @@ export function Button({
     variant = "primary",
     isLoading,
     disabled,
+    icon,
     style,
     ...buttonProps
 }: ButtonProps) {
@@ -38,10 +42,29 @@ export function Button({
             {isLoading ? (
                 <ActivityIndicator
                     size="large"
-                    color={variant === "primary" ? theme.colors.black : theme.colors.white}
+                    color={
+                        variant === "primary"
+                            ? theme.colors.black
+                            : theme.colors.white
+                    }
                 />
             ) : (
-                <Text style={styles.label}>{label}</Text>
+                <View
+                    style={{
+                        gap: 10,
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                >
+                    {icon && (
+                        <MaterialCommunityIcons
+                            name={icon as any}
+                            size={24}
+                            style={styles.label}
+                        />
+                    )}
+                    <Text style={styles.label}>{label}</Text>
+                </View>
             )}
         </TouchableOpacity>
     );

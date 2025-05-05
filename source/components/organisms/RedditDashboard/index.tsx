@@ -39,7 +39,7 @@ export function RedditDashboard({ id }: RedditDashboardProps) {
 
     const handleAuthClick = () => {
         Linking.openURL(
-            `http://192.168.2.101:5123/api/reddit/auth?state=${id}`
+            `${API_URL}/api/reddit/auth?state=${id}`
         );
         setShouldStartPolling(true);
     };
